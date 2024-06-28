@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Weather from './components/Weather';
+import Search from './components/Search';
 import './App.css';
 
-function App() {
-  return (
+const App = () => (
+  <Router>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Weather Forecast App</h1>
       </header>
+      <main>
+        {/* Render the Search component on every route */}
+        <Search />
+        <Routes>
+          <Route path="/" element={<Weather />} />
+          <Route path="/:location" element={<Weather />} />
+        </Routes>
+      </main>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
